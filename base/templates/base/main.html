@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<h3>Enter a block of your resume!</h3>
+<p>Our AI will do our best to give you advice.</p><br>
+<form class="ai-form"method="post">
+  {% csrf_token %}
+  <textarea name="user_input" rows="10" cols="100"></textarea><br>
+  <button class="btn btn-warning btn-lg" type="submit">Get Feedback!</button>
+</form><br><br>
+
+{% if response %}
+<h2>Resumate believes that...</h2>
+  <div class="advice">
+    <p>{{response | safe}}</p>
+  </div>
+{% endif %}
+
+{% endblock content %}
